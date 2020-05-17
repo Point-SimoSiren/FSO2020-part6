@@ -9,7 +9,6 @@ const anecdoteReducer = (state = [], action) => {
 
     case 'INITIALS':
       return action.payload
-        .sort((upper, lower) => (upper.votes > lower.votes) ? -1 : 1)
     default: return state
 
     case 'CREATE':

@@ -13,7 +13,9 @@ const AnecdotesList = () => {
     }
 
     const anecdotes = useSelector(({ anecdotes, filter }) => {
-        return anecdotes.filter(a => a.content.toLowerCase().includes(filter.toLowerCase())).sort((a, b) => b.votes - a.votes)
+        return anecdotes.filter(a => a.content.toLowerCase().includes(filter.toLowerCase()))
+            .sort((a, b) => (a.votes > b.votes) ? -1 : 1)
+        //.sort((a, b) => b.votes - a.votes) toinen tapa lajitella
     })
 
     return (
