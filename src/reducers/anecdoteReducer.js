@@ -1,7 +1,5 @@
 import anecdotesService from '../services/anecdotes'
 
-/* Reducer which receives dispatch actions from action creators located at the bottom
-of this file and then decides how to update the application level state in redux store */
 
 const anecdoteReducer = (state = [], action) => {
   let newState = [...state]
@@ -20,7 +18,6 @@ const anecdoteReducer = (state = [], action) => {
         return anecdote.id === id
       })
       newState[found].votes = newState[found].votes + 1
-      newState = sorted(newState)
       return newState
   }
 }
@@ -57,11 +54,6 @@ export const initAction = () => {
       payload: anecdotes
     })
   }
-}
-const sorted = (anecdotes) => {
-  return anecdotes.sort((upper, lower) => {
-    return upper.votes > lower.votes
-  })
 }
 
 export default anecdoteReducer

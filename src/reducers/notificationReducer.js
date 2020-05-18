@@ -1,5 +1,3 @@
-let exist = false
-
 const notificationReducer = (state = 'Welcome to the world of programming anecdotes!', action) => {
     switch (action.type) {
         case 'SET':
@@ -12,7 +10,8 @@ const notificationReducer = (state = 'Welcome to the world of programming anecdo
 }
 // ---------Action creator for notifications------
 
-export const notificationAction = (message, duration) => {
+export const notificationAction = (message) => {
+
     return dispatch => {
         dispatch({
             type: 'SET',
@@ -20,12 +19,17 @@ export const notificationAction = (message, duration) => {
                 message: message
             }
         })
-
-        setTimeout(() => {
-            dispatch({
-                type: 'EMPTY'
-            })
-        }, duration * 1000)
     }
 }
+
+export const emptyAction = () => {
+
+    return dispatch => {
+        dispatch({
+            type: 'EMPTY'
+        })
+    }
+}
+
+
 export default notificationReducer

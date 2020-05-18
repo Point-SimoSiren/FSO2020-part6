@@ -11,7 +11,7 @@ const AnecdoteForm = (props) => {
         console.log('form submitissa: ', content)
 
         props.createAction(content)
-        props.notificationAction(`You have successfully added a new Anecdote: ${content}`, 6)
+        props.notificationAction(`You have successfully added a new Anecdote: ${content}`)
     }
     return (
         <div style={{ background: 'darkorange' }}>

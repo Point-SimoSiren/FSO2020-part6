@@ -1,6 +1,6 @@
 import React from 'react'
 import { voteAction } from '../reducers/anecdoteReducer'
-import { notificationAction } from '../reducers/notificationReducer'
+import { notificationAction, emptyAction } from '../reducers/notificationReducer'
 import { useDispatch, useSelector } from 'react-redux'
 
 const AnecdotesList = () => {
@@ -9,7 +9,13 @@ const AnecdotesList = () => {
 
     const like = (anecdote) => {
         dispatch(voteAction(anecdote.id))
-        dispatch(notificationAction(`You hit Like on ${anecdote.content}"`, 5))
+        dispatch(notificationAction(`You hit Like on ${anecdote.content}"`), 5)
+
+        const timeoutId = setTimeout(() => {
+            dispatch(emptyAction())
+        }, 5000)
+
+        clearTimeout(timeoutId - 1)
     }
 
     const anecdotes = useSelector(({ anecdotes, filter }) => {
